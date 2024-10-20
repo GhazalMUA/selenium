@@ -1,3 +1,7 @@
+'''
+    scraping data from `https://mastersportal.com` and crawling data from it (country:Germany, major:Computer)
+'''
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
@@ -12,8 +16,6 @@ chrome_options = Options()
 # chrome_options.add_argument("--headless")  # Run in headless mode (no GUI)
 chrome_options.add_argument("--disable-blink-features=AutomationControlled")  # To avoid detection
 chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3")  # Fake user-agent
-
-
 
 
 driver= webdriver.Chrome(options=chrome_options)
