@@ -1,10 +1,14 @@
+
+'''
+    this is a data scraping from jobinja.ir website 
+'''
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By 
 import pandas as pd
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
 import time
 
 
@@ -36,6 +40,7 @@ if len(titles) == len(companies) == len(logos)  == len(location):
         list.append([t.text if t else "N/A", com.text if com else "N/A", l.get_attribute('src') if l else "N/A", loc.text if loc else "N/A"])
 
     data = pd.DataFrame(list, columns= col)
+    print(data)
     data.to_csv('jobs1.csv')    
     print('that was successfull.')
 
