@@ -12,9 +12,7 @@ driver = webdriver.Chrome()
 url = 'https://jobinja.ir/'
 driver.get(url)
 
-
-
-
+# jobinja intorie ke vaghti yebafr enter mikoni mire search mikone
 search_title = driver.find_element(by=By.XPATH, value='/html/body/div[1]/div[2]/div/form/div[1]/input')
 
 search_title.click()
@@ -48,8 +46,7 @@ else:
     print(f"Number of logos found: {len(logos)}")
     print(f"Number of location found: {len(location)}")
 
-
-        
+time.sleep(5)        
 driver.quit()    
 
 
