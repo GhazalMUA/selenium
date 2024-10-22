@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+import pandas as pd
 
 '''
     global variables
@@ -133,11 +134,9 @@ try:
     photos_list.click()
     print('i clicked on photos')
     time.sleep(2)
-    # album = WebDriverWait(driver,15).until(EC.presence_of_element_located((By.XPATH, '//a[contains(text(),"Albums")]')))
-    # print('i found album icon')
+    
     #age bekhay ta paine safe scroll koni bejaye inmeghdar bayad ino bezani document.body.scrollHeight
-    # driver.execute_script("arguments[0].scrollIntoView(true);", album)
-    driver.execute_script("window.scrollBy(0, 1000);")
+    driver.execute_script("window.scrollBy(0, 700);")
     print('Scrolled down to my target')
     driver.get_screenshot_as_file('screenshotofamirsphotos.png')
     time.sleep(3)
@@ -145,8 +144,31 @@ try:
 except Exception as e:
     print(f'i didnt found photos icon. {e}')
 
+list_photos=[]  
+
+try:
+    time.sleep(5)
+    # Use contains to match a portion of the class
+    pictures = driver.find_elements(By.XPATH, '//img[contains(@class, "xzg4506")]')  # Match part of the class name
+
+    # pictures = driver.find_elements(By.XPATH, '//img[@class="class="xzg4506 xycxndf xua58t2 x4xrfw5 x1lq5wgf xgqcy7u x30kzoy x9jhf4c x9f619 x5yr21d xl1xv1r xh8yej3""]')  # Correct the class name as per Facebook's structure
+    print(f"Number of images found: {len(pictures)}")
+    for pic in pictures:
+        image = pic.get_attribute("src")
+        print(image)
+        list_photos.append([image])
+except Exception as e:
+    print(f'Error in finding photos: {e}')
+
+try:
+    dataframe = pd.DataFrame(list_photos, columns=['photos'])
+    dataframe.to_csv('photos.csv', index=False)
+    print('Saving photos was successful.')
+except Exception as e:
+    print(f'Error in saving photos: {e}')
 
 time.sleep(3)    
 driver.quit()
+
 
 
