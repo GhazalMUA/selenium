@@ -28,6 +28,8 @@ WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, '
 
 col = ['title', 'company', 'logo', 'location']
 
+
+
 titles = driver.find_elements(by=By.CLASS_NAME, value='c-jobListView__titleLink')
 companies = driver.find_elements(by=By.XPATH, value='//ul[contains(@class, "c-jobListView__meta")]//li[1]//span')
 logos = driver.find_elements(by=By.CLASS_NAME, value='o-listView__itemIndicatorImage')

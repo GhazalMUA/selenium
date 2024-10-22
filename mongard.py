@@ -1,8 +1,10 @@
 '''
     mongard entekhab shode chonke ye meghdar bayad az balaye safe
     biam pain ke betonam icon ozviate vizhe ro bebinam.
+    bad az click bar rooye ozviate vizhe bia tooye roadmap
+    ye meghdar bia pain ta jadvalo bebini
+    az jadval screenshot begir.
     
-    take screenshot of the end of nthe homepage
     
     up: in jaiye ke mikham ta jai biad scroll kone pain ke in element 
     daghighan balaye safe gharra begire.
@@ -14,8 +16,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
-
-
 
 url='https://www.mongard.ir/'
 driver = webdriver.Chrome()
@@ -39,7 +39,7 @@ try:
     up = driver.find_element(by=By.XPATH, value='//*[@id="backend"]/h2[2]/span[2]/span/strong') 
     driver.execute_script("arguments[0].scrollIntoView(true);" , up)
     time.sleep(2)
-    sc = driver.get_screenshot_as_file('mongardroadmapeSC.png')
+    sc = driver.get_screenshot_as_file('mongardroadmapeSC.png') #take screenshot
 
 
 except Exception as e:  
