@@ -12,8 +12,8 @@ import pandas as pd
     global variables
 '''
 SEARCH_ITEM = 'amiroism'
-
-
+XPATH_OF_TARGET_ACCOUNT = "//a[contains(text(), 'Amir Hatami (Amiro)')]"
+    
 '''
     this will block popups
 '''
@@ -78,7 +78,7 @@ try:
 except:
     print('notif after login didnt show')
     
-time.sleep(20)    
+time.sleep(5)    
 
 
 #notif to save password after login successfully. you can click on not now. this will not show propably
@@ -116,11 +116,11 @@ time.sleep(2)
 
 #finding target accout/search word in the suggested list
 try:
-    targeted_search = WebDriverWait(driver,10).until(EC.presence_of_element_located((By.XPATH, "//a[contains(text(), 'Amir Hatami (Amiro)')]")))
+    targeted_search = WebDriverWait(driver,10).until(EC.presence_of_element_located((By.XPATH, XPATH_OF_TARGET_ACCOUNT)))
     driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'center'});", targeted_search)
     time.sleep(2)
-    print('profile opened')
     targeted_search.click()
+    print('profile opened')
 except Exception as e:
     print(f'your requested profile not found. {e}')
 
@@ -146,6 +146,7 @@ except Exception as e:
 
 list_photos=[]  
 
+# catch photos:
 try:
     time.sleep(5)
     # Use contains to match a portion of the class
